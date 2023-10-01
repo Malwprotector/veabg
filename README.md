@@ -1,5 +1,6 @@
 # veabg
-<img src='https://raw.githubusercontent.com/Malwprotector/veabg/main/illustration.png'></img>
+<a> <img src='https://raw.githubusercontent.com/Malwprotector/veabg/main/illustration.png'></img></a>
+
 veabg is a vaccine simulator in python that produces a graph based on input data. It was produced as part of a school science course.
 
 When you are asked to select values with shortcuts, use ctrl+n to move the cursor.
