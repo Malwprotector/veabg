@@ -11,6 +11,7 @@ When you are asked to select values with shortcuts, use ctrl+n to move the curso
 
 <strong>What is infection rate?</strong>
 
+
 The infection rate in a simulation like this represents the probability that a susceptible person will become infected when in contact with an infected person. In other words, it measures the likelihood of transmission when an infected person interacts with a susceptible person.
 
 Here's a bit more detail:
@@ -28,6 +29,7 @@ Here's a bit more detail:
 Remember that in a real-world scenario, the actual infection rate of a disease depends on various factors including the pathogen's characteristics, the environment, and human behavior. It's a complex parameter that's central to understanding and managing epidemics.
 
 <strong>What is the recovery rate?</strong>
+
 
 The recovery rate in a virus simulation represents the probability that an infected individual will recover from the illness in a given period, typically a day. It is a crucial parameter in modeling the spread of infectious diseases.
 
@@ -48,6 +50,8 @@ In real-world terms, the recovery rate is influenced by factors like the nature 
 In summary, the recovery rate is a crucial parameter in modeling the dynamics of infectious diseases, as it helps to determine how quickly infected individuals will recover and no longer be able to spread the virus.
 
 <strong>What is the daily vaccination rate?</strong>
+
+
 The "daily vaccination rate" in this context refers to the proportion of the population that is being vaccinated each day. It's a measure of how quickly the vaccination campaign is being carried out.
 
 For example, if the daily vaccination rate is set to 0.02, it means that on each day of the simulation, 2% of the total population is being vaccinated. This rate is applied consistently each day.
@@ -57,6 +61,8 @@ The purpose of specifying a daily vaccination rate in a simulation like this is 
 In real-world situations, the vaccination rate can be influenced by various factors such as availability of vaccines, logistical challenges, public willingness to get vaccinated, and government policies. By including this parameter in the simulation, you can analyze how different rates of vaccination affect the overall outcome of the epidemic.
 
 <strong>What is the daily quarantine rate?</strong>
+
+
 The "daily quarantine rate" in this context represents the proportion of infected individuals who are isolated or kept in quarantine each day. It is a parameter in the simulation that determines how effective quarantine measures are at reducing the spread of the virus.
 
 Here's how it works within the simulation:
@@ -74,6 +80,8 @@ Here's how it works within the simulation:
 In summary, the daily quarantine rate is a way to model the impact of quarantine measures on the spread of the virus within the simulation. A higher quarantine rate means more infected individuals are effectively isolated, leading to a slower spread of the virus.
 
 <strong>What is the average of social contacts per day?</strong>
+
+
 The "average number of social contacts per day" is a parameter in the simulation that represents how many interactions an individual has with other people in a given day. In the context of a virus spread simulation, this parameter is important because it influences the potential for the virus to spread from an infected person to others.
 
 Here's what it means:
@@ -91,6 +99,8 @@ For example, consider two scenarios:
 Adjusting this parameter allows the simulation to reflect different social behaviors and interventions that can affect the spread of a virus. It helps model the real-world dynamics of how people interact and how that impacts the spread of the virus in a population.
 
 <strong>What is the factor reducing social contacts due to mobility restrictions</strong>
+
+
 The "factor reducing social contacts due to mobility restrictions" is a parameter in the simulation that represents the reduction in the number of social interactions people have due to measures put in place to restrict movement. 
 
 In real-world scenarios, this could be related to various factors such as:
