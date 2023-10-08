@@ -98,7 +98,7 @@ For example, consider two scenarios:
 
 Adjusting this parameter allows the simulation to reflect different social behaviors and interventions that can affect the spread of a virus. It helps model the real-world dynamics of how people interact and how that impacts the spread of the virus in a population.
 
-<strong>What is the factor reducing social contacts due to mobility restrictions</strong>
+<strong>What is the factor reducing social contacts due to mobility restrictions?</strong>
 
 
 The "factor reducing social contacts due to mobility restrictions" is a parameter in the simulation that represents the reduction in the number of social interactions people have due to measures put in place to restrict movement. 
