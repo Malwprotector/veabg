@@ -17,24 +17,38 @@ print(f'{Fore.LIGHTRED_EX + Style.BRIGHT}WARNING! Please note that this programm
 #veabg mode (normal or advanced)
 mode = questionary.confirm('Run veabg in normal or advanced mode? (default is normal)').ask()
 if mode == True:
-    print(f'{Fore.LIGHTGREEN_EX}[running in normal mode]{Style.RESET_ALL}')
-
+    print(f'{Fore.LIGHTGREEN_EX}[running in normal mode]\n{Style.RESET_ALL}')
     # Simulation parameters for normal mode
+    print(blue + '==============\n==population==\n==============\n')
+
     population = int(questionary.text("Enter the total population size covered by the vaccination study: ").ask())
 
     initial_infected = int(questionary.text("Enter the initial number of infected population:  ").ask())
+
+    days_simulation = int(questionary.text("Enter the number of days to simulate: ").ask())
+
+    social_contacts = int(questionary.text("Enter the average number of social contacts per day: ").ask())
+
+    print(blue + '\n==========\n==threat==\n==========\n')
 
     infection_rate = float(questionary.rawselect(
         "Select the infection rate (probability of a susceptible person getting infected on contact): ",
         choices=["0.0","0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0"],
     ).ask())
 
+    incubation_period = int(questionary.text("Enter the incubation period (in days): ").ask())
+
     recovery_rate = float(questionary.rawselect(
         "Select the recovery rate (probability of an infected person recovering per day): ",
         choices=["0.0","0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0"],
     ).ask())
 
-    days_simulation = int(questionary.text("Enter the number of days to simulate: ").ask())
+    print(blue + '\n===========\n==vaccine==\n===========\n')
+
+    vaccine_efficacy = float(questionary.rawselect(
+        "Select the efficacy of the vaccine (reduces the probability of infection): ",
+        choices=["0.0","0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0"],
+    ).ask())
 
     vaccination_rate = float(questionary.rawselect(
         "Select the daily vaccination rate: ",
@@ -46,40 +60,44 @@ if mode == True:
         choices=["0.0","0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0"],
     ).ask())
 
-    social_contacts = int(questionary.text("Enter the average number of social contacts per day: ").ask())
-
     mobility_factor = float(questionary.rawselect(
         "Select the factor reducing social contacts due to mobility restrictions: ",
         choices=["0.0","0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0"],
     ).ask())
 
-    vaccine_efficacy = float(questionary.rawselect(
-        "Select the efficacy of the vaccine (reduces the probability of infection): ",
-        choices=["0.0","0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1.0"],
-    ).ask())
 else:
-    print(f'{Fore.LIGHTRED_EX + Style.BRIGHT}[running in advanced mode]{Style.RESET_ALL}')
+    print(f'{Fore.LIGHTRED_EX + Style.BRIGHT}[running in advanced mode]\n{Style.RESET_ALL}')
 
     # Simulation parameters for advanced mode
+    print(blue + '==============\n==population==\n==============\n')
+
     population = int(questionary.text("Enter the total population size covered by the vaccination study: ").ask())
 
     initial_infected = int(questionary.text("Enter the initial number of infected population:  ").ask())
 
+    days_simulation = int(questionary.text("Enter the number of days to simulate: ").ask())
+
+    social_contacts = int(questionary.text("Enter the average number of social contacts per day: ").ask())
+
+
+    print(blue + '\n==========\n==threat==\n==========\n')
+
+
     infection_rate = float(questionary.text("Enter the infection rate (probability of a susceptible person getting infected on contact, 1 = 100%): ").ask())
+
+    incubation_period = int(questionary.text("Enter the incubation period (in days): ").ask())
 
     recovery_rate = float(questionary.text("Enter the recovery rate (probability of an infected person recovering per day, 1 = 100%): ").ask())
 
-    days_simulation = int(questionary.text("Enter the number of days to simulate: ").ask())
+    print(blue + '\n===========\n==vaccine==\n===========\n')
+
+    vaccine_efficacy = float(questionary.text("Enter the efficacy of the vaccine (reduces the probability of infection, 1 = 100%): ").ask())
 
     vaccination_rate = float(questionary.text("Enter the daily vaccination rate (0.1 = 10%): ").ask())
 
     quarantine_rate = float(questionary.text("Enter the daily quarantine rate (proportion of infected individuals in quarantine, 1 = 100%): ").ask())
 
-    social_contacts = int(questionary.text("Enter the average number of social contacts per day: ").ask())
-
     mobility_factor = float(questionary.text("Enter the factor reducing social contacts due to mobility restrictions (1 = 100%): ").ask())
-
-    vaccine_efficacy = float(questionary.text("Enter the efficacy of the vaccine (reduces the probability of infection, 1 = 100%): ").ask())
 
 #simulation estimation
 print(f'{Fore.LIGHTGREEN_EX}\nsimulation estimation and data debugging...\n{Style.RESET_ALL}')
@@ -104,6 +122,9 @@ for day in range(1, days_simulation):
     susceptible[day] -= people_vaccinated
     vaccinated[day] = vaccinated[day-1] + people_vaccinated
     quarantined[day] = infected[day] * quarantine_rate
+    if day >= incubation_period:
+        infected[day] -= infected[day - incubation_period]
+        recovered[day] += infected[day - incubation_period]
 print(f'{Fore.LIGHTGREEN_EX}\nestimation done.\n{Style.RESET_ALL}')
 
 #confirmation
@@ -165,6 +186,11 @@ for day in range(1, days_simulation):
     # Quarantine
     quarantined[day] = infected[day] * quarantine_rate
 print(f'{Fore.LIGHTGREEN_EX}Done!{Style.RESET_ALL}')
+
+    # Adjust for incubation period
+if day >= incubation_period:
+    infected[day] -= infected[day - incubation_period]
+    recovered[day] += infected[day - incubation_period]
 
 # Plotting the results
 print(f'{Fore.LIGHTGREEN_EX}generating the graph...{Style.RESET_ALL}')
