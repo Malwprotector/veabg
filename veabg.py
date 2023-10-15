@@ -132,6 +132,7 @@ print(f'{Fore.CYAN + Style.BRIGHT}population size covered by the vaccination stu
 print(f'{Fore.CYAN + Style.BRIGHT}initial number of infected population:{Style.RESET_ALL}', Fore.YELLOW + str(initial_infected) + Style.RESET_ALL)
 print(f'{Fore.CYAN + Style.BRIGHT}infection rate:{Style.RESET_ALL}', Fore.YELLOW + str(infection_rate) + Style.RESET_ALL)
 print(f'{Fore.CYAN + Style.BRIGHT}recovery rate:{Style.RESET_ALL}', Fore.YELLOW + str(recovery_rate) + Style.RESET_ALL)
+print(f'{Fore.CYAN + Style.BRIGHT}incubation period:{Style.RESET_ALL}', Fore.YELLOW + str(incubation_period) + Style.RESET_ALL)
 print(f'{Fore.CYAN + Style.BRIGHT}number of days to simulate:{Style.RESET_ALL}', Fore.YELLOW + str(days_simulation) + Style.RESET_ALL)
 print(f'{Fore.CYAN + Style.BRIGHT}daily vaccination rate:{Style.RESET_ALL}', Fore.YELLOW + str(vaccination_rate) + Style.RESET_ALL)
 print(f'{Fore.CYAN + Style.BRIGHT}daily quarantine rate:{Style.RESET_ALL}', Fore.YELLOW + str(quarantine_rate) + Style.RESET_ALL)
