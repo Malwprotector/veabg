@@ -5,7 +5,8 @@ veabg is a vaccine simulator in python that produces a graph based on input data
 
 When you are asked to select values with shortcuts, use ctrl+n to move the cursor.
 
-<strong>WARNING! Please note that this programme has been produced for school purposes ONLY. It may contain erroneous or inaccurate information. You use it at your own risk.</strong>
+## Disclaimer
+<strong>This project/software has been produced for educational purposes ONLY. It aims to provide an interactive experience to understand the vaccination process in an educational context. Please note that the information provided may contain simplifications, approximations, or inaccuracies. The simulator cannot accurately replicate all real-world variables and outcomes related to vaccines. It is crucial to seek accurate and up-to-date information from qualified healthcare professionals. By using this project / software, you acknowledge and accept that you do so at your own risk, and no one other than yourself can be held responsible for any potential damage resulting from its use.</strong>
 
 # FAQ
 
